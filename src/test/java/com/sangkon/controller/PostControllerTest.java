@@ -1,6 +1,7 @@
 package com.sangkon.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sangkon.model.post.Post;
 import com.sangkon.repository.post.PostRepository;
 import com.sangkon.service.post.PostService;
 import org.junit.Test;
@@ -30,9 +31,14 @@ public class PostControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Autowired
+    PostRepository postRepository;
 
     @Test
     public void testGetPost() throws Exception {
+
+        postRepository.save(Post.builder().id(1L).description("Desc").build());
+
         mockMvc.perform(get("/api/posts/1").accept(MediaType.TEXT_PLAIN))
                 .andExpect(content().string("Desc"));
     }

@@ -23,8 +23,6 @@ public class PostController {
     @GetMapping("/{postId}")
     public String getPost(@PathVariable Long postId){
         Post postById = postService.findPostById(postId);
-        System.out.println("postId : "+ postId);
-        System.out.println(postById.getDescription());
         return postById.getDescription();
     }
 
