@@ -32,12 +32,12 @@ public class PostControllerTest {
     ObjectMapper objectMapper;
 
     @Autowired
-    PostRepository postRepository;
+    PostService postService;
 
     @Test
     public void testGetPost() throws Exception {
 
-        postRepository.save(Post.builder().id(1L).description("Desc").build());
+        postService.savePost(Post.builder().id(1L).description("Desc").build());
 
         mockMvc.perform(get("/api/posts/1").accept(MediaType.TEXT_PLAIN))
                 .andExpect(content().string("Desc"));
