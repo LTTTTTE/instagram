@@ -19,7 +19,7 @@ public class PostController {
 
     //    @GetMapping("/user/{userId}")
 //    @GetMapping("/images/{fileName:.+}")
-
+//
     @GetMapping("/{postId}")
     public String getPost(@PathVariable Long postId){
         Post postById = postService.findPostById(postId);
