@@ -1,8 +1,20 @@
 package com.sangkon.model.post;
 
-import java.time.Instant;
+import lombok.*;
 
+import javax.persistence.*;
+import java.time.Instant;
+@Entity
+@Table
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = "id")
+@Getter
+@Setter
+@Builder
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
     private String imagePath;

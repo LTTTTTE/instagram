@@ -1,7 +1,15 @@
 package com.sangkon.model.user;
 
+import lombok.*;
+
 import java.time.Instant;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
+@Builder
 public class User {
     private Long id;
     private String name;

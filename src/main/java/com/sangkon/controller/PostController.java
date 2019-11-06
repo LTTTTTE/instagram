@@ -1,14 +1,31 @@
 package com.sangkon.controller;
 
 
+import com.sangkon.model.post.Post;
+import com.sangkon.service.post.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/posts")
 public class PostController {
-//    @GetMapping("/user/{userId}")
+
+    private PostService postService;
+
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
+
+    //    @GetMapping("/user/{userId}")
 //    @GetMapping("/images/{fileName:.+}")
-//    @GetMapping("/{postId}")
+
+    @GetMapping("/{postId}")
+    public String getPost(@PathVariable Long postId){
+        Post postById = postService.findPostById(postId);
+        return postById.getDescription();
+    }
+
 //    @GetMapping("/{postId}/comments")
 //    @GetMapping("/{postId}/comments/{commentId}")
 //    @PostMapping("/{postId}/comments")
