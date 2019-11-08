@@ -31,7 +31,6 @@ public class PostController {
     @GetMapping("/{postId}")
     public String getPost(@PathVariable Long postId) throws JsonProcessingException {
         Post post = postService.findPostById(postId);
-        objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(post);
     }
 
