@@ -36,9 +36,6 @@ public class PostControllerTest {
 
     @Test
     public void testGetPost() throws Exception {
-
-        postService.savePost(Post.builder().id(1L).description("Desc").build());
-
         mockMvc.perform(get("/api/posts/1").accept(MediaType.TEXT_PLAIN))
                 .andExpect(content().string("Desc"));
     }
