@@ -33,7 +33,16 @@ public class UserTest {
         User user = User.builder().id(1L).name("hello").build();
         User user2 = User.builder().id(1L).name("world").build();
         assertThat(user).isEqualTo(user2);
-
     }
+
+    @Test
+    public void createPojoUserByIdAndUsername(){
+        User user = User.builder().id(1L).username("이름1").build();
+        User user2 = User.builder().id(1L).username("이름2").phone("010").build();
+        User user3 = User.builder().id(1L).username("이름2").phone("444").build();
+        assertThat(user).isNotEqualTo(user2);
+        assertThat(user2).isEqualTo(user3);
+    }
+
 
 }

@@ -50,6 +50,9 @@ public class PostControllerTest {
                 .andExpect(jsonPath("description").exists());
         mockMvc.perform(get("/api/posts/2").contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaTypes.HAL_JSON))
-                .andExpect(jsonPath("description", "내용").exists());
+                .andExpect(jsonPath("description").value("내용"));
+        mockMvc.perform(get("/api/posts/3").contentType(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaTypes.HAL_JSON))
+                .andExpect(jsonPath("imagePath").value("C"));
     }
 }
